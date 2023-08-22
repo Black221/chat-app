@@ -1,10 +1,9 @@
 
-
-
+import Head from "../components/Header"
 const Home = () => {
 
     return (<>
-        Hello
+       <Head/>
     </>)
 }
 

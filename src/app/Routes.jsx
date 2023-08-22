@@ -7,7 +7,7 @@ export default function Routes () {
     return (<>
         <ReactRoutes>
 			<Route path="/" element={ <Layout /> } >
-				<Route path="/home" element={
+				<Route path="/" element={
 					<Home />
 				} />
 			</Route>
