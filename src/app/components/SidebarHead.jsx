@@ -13,7 +13,7 @@ const SidebarHead = ({onlineCount = 0}) => {
             <div>
                 <h1 className="text-xl font-medium">Global chat</h1>
                 <div className='flex items-center space-x-1'>
-                    <span className='bg-[#1BED30] inline-block w-4 h-4 rounded-full'></span>
+                    <span className='bg-[#1BED30] inline-block w-2 h-2 rounded-full'></span>
                     <span className='font-medium'>Online</span> 
                     <span> {count}</span>
                 </div>

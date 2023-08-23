@@ -3,6 +3,7 @@ import { useState } from "react";
 import InputMessage from "./InputMessage";
 import MessagesList from "./MessagesList";
 
+import bg from "../../assets/bg.png";
 
 
 const ChatRoom = ({room = "global"}) => {
@@ -21,9 +22,9 @@ const ChatRoom = ({room = "global"}) => {
     
 
     return (<>
-        <div className="relative bg-red-50">
+        <div className={`relative bg-cover bg-[url('./bg.png')]  flex-1`}>
 
-            <div className="flex flex-col h-screen overflow-hidden">
+            <div className="flex flex-col  overflow-hidden h-full">
                 <div className="flex-1 overscroll-y-auto">
                     <MessagesList data={messages} />
                 </div>

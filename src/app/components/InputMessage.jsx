@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { BiLink, BiSolidSend } from "react-icons/bi";
 import { FaRegSmileBeam } from "react-icons/fa";
 import { HiPhotograph } from "react-icons/hi";
@@ -36,13 +36,42 @@ const InputMessage = ({ message, setMessage, sendMessage }) => {
         setFile(null);
     };
 
+    //On click outside of emoji picker close emoji picker
+    const emojiPicker = useRef(null);
+    useEffect(() => {
+        const handleClickOutside = (e) => {
+            if (emojiPicker.current && !emojiPicker.current.contains(e.target)) {
+                setShowEmoji(false)
+            }
+        }
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [emojiPicker]);
+
+    //On click outside of link close link
+    const link = useRef(null);
+    useEffect(() => {
+        const handleClickOutside = (e) => {
+            if (link.current && !link.current.contains(e.target)) {
+                setShowLink(false)
+            }
+        }
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [link]);
+
+
 
     return (<>
 
         
         <div className="bg-white flex p-2 space-x-3 items-center relative border">
 
-            {showLink && <div className="absolute flex w-full">
+            {showLink && <div ref={link} className="absolute flex w-full">
                 <div className="bg-white rounded-full p-3 relative -top-16 border flex space-x-3">
                     <button onClick={toggleEmoji}>
                         <FaRegSmileBeam className="text-2xl" />
@@ -55,8 +84,8 @@ const InputMessage = ({ message, setMessage, sendMessage }) => {
 
                 </div>
 
-                {showEmoji && <div className="absolute bottom-32 z-30">
-                    <Picker data={data} onEmojiSelect={printEmoji} />
+                {showEmoji && <div ref={emojiPicker} className="absolute bottom-32 z-30">
+                    <Picker data={data} onEmojiSelect={printEmoji} dynamicWidth={true} />
                 </div>}
 
             </div>}

@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+em-emoji-picker {
+    width: fit-content;
+    min-width: 260px;
+    resize: horizontal;
+    overflow: auto;
+}
